@@ -19,7 +19,7 @@ namespace AlCompositePattern
         {
             Lunghezza = 0;
         }
-        public Coda(double lun, double apr)
+        public Coda(double lun)
         {
             Lunghezza = lun;
         }

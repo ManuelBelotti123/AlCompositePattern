@@ -25,11 +25,12 @@ namespace AlCompositePattern
         public Aliante(Ala al, Fusoliera fus, Coda coda, Ruota rt)
         {
             Componenti.Add(al);
+            Componenti.Add(al);
             Componenti.Add(fus);
             Componenti.Add(coda);
             Componenti.Add(rt);
             Componenti.Add(rt);
-            Numcomponenti = 5;
+            Numcomponenti = 6;
         }
         public Aliante(Aliante aln)
         {
