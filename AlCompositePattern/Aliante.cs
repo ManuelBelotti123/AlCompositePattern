@@ -99,6 +99,10 @@ namespace AlCompositePattern
             string tot = "";
             for (int i = 0; i < Numcomponenti; i++)
             {
+                if (Componenti[i].Descrizione() == Componenti[i + 1].Descrizione())
+                {
+                    i++;
+                }
                 tot += Componenti[i].Descrizione();
                 if (i != Numcomponenti - 1)
                 {
