@@ -36,6 +36,7 @@ namespace AlCompositePattern
                 && raggiogomma.Text == string.Empty)
             {
                 MessageBox.Show("Impossibile procedere, inserire la totalità dei parametri.", "Avviso", MessageBoxButtons.OK);
+                return;
             }
             else
             {
@@ -46,6 +47,8 @@ namespace AlCompositePattern
                 Gomma gm = new Gomma(double.Parse(altezzagomma.Text), double.Parse(larghezzagomma.Text), double.Parse(raggiogomma.Text));
                 Ruota rt = new Ruota(cer, gm);
                 Aliante aln = new Aliante(ala, fusoliera, coda, rt);
+                descrizionealiante.Text = aln.Descrizione();
+                costototale.Text = aln.CalcoloCosto().ToString();
             }
         }
     }

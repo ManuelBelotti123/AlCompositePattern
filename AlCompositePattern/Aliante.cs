@@ -24,6 +24,7 @@ namespace AlCompositePattern
         }
         public Aliante(Ala al, Fusoliera fus, Coda coda, Ruota rt)
         {
+            Componenti = new List<Componente>();
             Componenti.Add(al);
             Componenti.Add(al);
             Componenti.Add(fus);
@@ -76,11 +77,32 @@ namespace AlCompositePattern
         }
 
         //metodi
+        public override void Add(Componente cmp)
+        {
+            Componenti.Add(cmp);
+            Numcomponenti++;
+        }
+
+        public override void Remove(int ind)
+        {
+            Componenti.RemoveAt(ind);
+            Numcomponenti--;
+        }
+
+        public override string GetChild(int ind)
+        {
+            return Componenti[ind].ToString();
+        }
+
         public override string Descrizione()
         {
             string tot = "";
             for (int i = 0; i < Numcomponenti; i++)
             {
+                if (Componenti[i].Descrizione() == Componenti[i + 1].Descrizione())
+                {
+                    i++;
+                }
                 tot += Componenti[i].Descrizione();
                 if (i != Numcomponenti - 1)
                 {
@@ -98,23 +120,6 @@ namespace AlCompositePattern
                 tot += Componenti[i].CalcoloCosto();
             }
             return tot;
-        }
-
-        public override void Add(Componente cmp)
-        {
-            Componenti.Add(cmp);
-            Numcomponenti++;
-        }
-
-        public override void Remove(int ind)
-        {
-            Componenti.RemoveAt(ind);
-            Numcomponenti--;
-        }
-
-        public override string GetChild(int ind)
-        {
-            return Componenti[ind].ToString();
         }
     }
 }
