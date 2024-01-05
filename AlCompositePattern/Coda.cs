@@ -65,5 +65,20 @@ namespace AlCompositePattern
         {
             return Lunghezza * 5;
         }
+
+        public override void Add(Componente cpm)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Remove(int ind)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string GetChild(int ind)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -19,8 +19,8 @@ namespace AlCompositePattern
         //costruttori
         public Ruota()
         {
-            Cerchione = null;
-            Gomma = null;
+            Cerchione = new Cerchione();
+            Gomma = new Gomma();
         }
         public Ruota(Cerchione cer, Gomma gm)
         {
@@ -70,6 +70,21 @@ namespace AlCompositePattern
         public override double CalcoloCosto()
         {
             return Cerchione.CalcoloCosto() + Gomma.CalcoloCosto();
+        }
+
+        public override void Add(Componente cpm)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Remove(int ind)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string GetChild(int ind)
+        {
+            throw new NotImplementedException();
         }
     }
 }
