@@ -10,7 +10,7 @@ namespace AlCompositePattern
     {
         public abstract string Descrizione();
         public abstract double CalcoloCosto();
-        public abstract void Add(Componente cmp);
+        public abstract void Add(IComponente cmp);
         public abstract void Remove(int ind);
         public abstract string GetChild(int ind);
     }

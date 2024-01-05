@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AlCompositePattern
 {
-    internal class Fusoliera : Componente
+    internal class Fusoliera : IComponente
     {
         //attributi
         private string _materiale;
@@ -62,27 +62,27 @@ namespace AlCompositePattern
         }
 
         //metodi
-        public override string Descrizione()
+        public string Descrizione()
         {
             return "Il materiale della fusoliera è " + Materiale + " e la sua lunghezza è " + Lunghezza.ToString() + ".";
         }
 
-        public override double CalcoloCosto()
+        public double CalcoloCosto()
         {
             return Lunghezza * 3;
         }
 
-        public override void Add(Componente cpm)
+        public void Add(IComponente cpm)
+        {   
+            throw new NotImplementedException();
+        }
+
+        public void Remove(int ind)
         {
             throw new NotImplementedException();
         }
 
-        public override void Remove(int ind)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string GetChild(int ind)
+        public string GetChild(int ind)
         {
             throw new NotImplementedException();
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AlCompositePattern
 {
-    internal class Gomma : Componente
+    internal class Gomma : IComponente
     {
         //attributi
         private double _altezza;
@@ -68,27 +68,27 @@ namespace AlCompositePattern
         }
 
         //metodi
-        public override string Descrizione()
+        public string Descrizione()
         {
             return "L'altezza della gomma è " + Altezza.ToString() + ", la sua larghezza è " + Larghezza.ToString() + " e il suo raggio è " + Raggio.ToString() + ".";
         }
 
-        public override double CalcoloCosto()
+        public double CalcoloCosto()
         {
             return Altezza * Larghezza * Raggio;
         }
 
-        public override void Add(Componente cpm)
+        public void Add(IComponente cpm)
         {
             throw new NotImplementedException();
         }
 
-        public override void Remove(int ind)
+        public void Remove(int ind)
         {
             throw new NotImplementedException();
         }
 
-        public override string GetChild(int ind)
+        public string GetChild(int ind)
         {
             throw new NotImplementedException();
         }

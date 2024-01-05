@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AlCompositePattern
 {
-    internal class Ruota : Componente
+    internal class Ruota : IComponente
     {
         //attributi
         private Cerchione _cerchione;
@@ -62,27 +62,27 @@ namespace AlCompositePattern
         }
 
         //metodi
-        public override string Descrizione()
+        public string Descrizione()
         {
             return Cerchione.Descrizione() + " " + Gomma.Descrizione();
         }
 
-        public override double CalcoloCosto()
+        public double CalcoloCosto()
         {
             return Cerchione.CalcoloCosto() + Gomma.CalcoloCosto();
         }
 
-        public override void Add(Componente cpm)
+        public void Add(IComponente cpm)
         {
             throw new NotImplementedException();
         }
 
-        public override void Remove(int ind)
+        public void Remove(int ind)
         {
             throw new NotImplementedException();
         }
 
-        public override string GetChild(int ind)
+        public string GetChild(int ind)
         {
             throw new NotImplementedException();
         }

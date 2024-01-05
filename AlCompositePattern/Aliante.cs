@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 
 namespace AlCompositePattern
 {
-    internal class Aliante : Componente
+    internal class Aliante : IComponente
     {
         //attributi
-        private List<Componente> _componenti;
+        private List<IComponente> _componenti;
         private int _numcomponenti;
 
         //proprietà
-        public List<Componente> Componenti { get { return _componenti; } set { _componenti = value; } }
+        public List<IComponente> Componenti { get { return _componenti; } set { _componenti = value; } }
         public int Numcomponenti { get { return _numcomponenti; } set { _numcomponenti = value; } }
 
         //costruttori
         public Aliante()
         {
-            Componenti = new List<Componente>();
+            Componenti = new List<IComponente>();
             Numcomponenti = 0;
         }
         public Aliante(Ala al, Fusoliera fus, Coda coda, Ruota rt)
         {
-            Componenti = new List<Componente>();
+            Componenti = new List<IComponente>();
             Componenti.Add(al);
             Componenti.Add(al);
             Componenti.Add(fus);
@@ -77,32 +77,28 @@ namespace AlCompositePattern
         }
 
         //metodi
-        public override void Add(Componente cmp)
+        public void Add(IComponente cmp)
         {
             Componenti.Add(cmp);
             Numcomponenti++;
         }
 
-        public override void Remove(int ind)
+        public void Remove(int ind)
         {
             Componenti.RemoveAt(ind);
             Numcomponenti--;
         }
 
-        public override string GetChild(int ind)
+        public string GetChild(int ind)
         {
             return Componenti[ind].ToString();
         }
 
-        public override string Descrizione()
+        public string Descrizione()
         {
             string tot = "";
             for (int i = 0; i < Numcomponenti; i++)
             {
-                if (Componenti[i].Descrizione() == Componenti[i + 1].Descrizione())
-                {
-                    i++;
-                }
                 tot += Componenti[i].Descrizione();
                 if (i != Numcomponenti - 1)
                 {
@@ -112,7 +108,7 @@ namespace AlCompositePattern
             return tot;
         }
 
-        public override double CalcoloCosto()
+        public double CalcoloCosto()
         {
             double tot = 0;
             for (int i = 0; i < Numcomponenti; i++)
