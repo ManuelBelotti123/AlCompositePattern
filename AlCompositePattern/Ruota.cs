@@ -9,28 +9,31 @@ namespace AlCompositePattern
     internal class Ruota : Componente
     {
         //attributi
-        private Cerchione _cerchione;
-        private Gomma _gomma;
+        private List<Componente> _componenti;
+        private int _numcomponenti;
 
         //proprietà
-        public Cerchione Cerchione { get { return _cerchione; } set { _cerchione = value; } }
-        public Gomma Gomma { get { return _gomma; } set { _gomma = value; } }
+        public List<Componente> Componenti { get { return _componenti; } set { _componenti = value; } }
+        public int Numcomponenti { get { return _numcomponenti; } set { _numcomponenti = value; } }
 
         //costruttori
         public Ruota()
         {
-            Cerchione = new Cerchione();
-            Gomma = new Gomma();
+            Componenti = new List<Componente>();
+            Numcomponenti = 0;
         }
         public Ruota(Cerchione cer, Gomma gm)
         {
-            Cerchione = cer;
-            Gomma = gm;
+            Componenti = new List<Componente>();
+            Componenti.Add(cer);
+            Componenti.Add(gm);
+            Numcomponenti = 2;
         }
         public Ruota(Ruota rt)
         {
-            Cerchione = rt.Cerchione;
-            Gomma = rt.Gomma;
+            Componenti = new List<Componente>();
+            Componenti = rt.Componenti;
+            Numcomponenti = rt.Numcomponenti;
         }
 
         //metodo equals
@@ -44,8 +47,8 @@ namespace AlCompositePattern
             {
                 Ruota rt = (Ruota)obj;
                 return rt != null
-                    && Cerchione == rt.Cerchione
-                    && Gomma == rt.Gomma;
+                    && Componenti == rt.Componenti
+                    && Numcomponenti == rt.Numcomponenti;
             }
         }
 
@@ -58,33 +61,58 @@ namespace AlCompositePattern
         //metodo ToString
         public override string ToString()
         {
-            return Gomma + ";" + Cerchione.ToString();
+            string tot = "";
+            for (int i = 0; i < Numcomponenti; i++)
+            {
+                tot += Componenti[i].ToString();
+                if (i != Numcomponenti - 1)
+                {
+                    tot += ";";
+                }
+            }
+            return tot;
         }
 
         //metodi
-        public override string Descrizione()
+        public override void Add(Componente cmp)
         {
-            return Cerchione.Descrizione() + " " + Gomma.Descrizione();
-        }
-
-        public override double CalcoloCosto()
-        {
-            return Cerchione.CalcoloCosto() + Gomma.CalcoloCosto();
-        }
-
-        public override void Add(Componente cpm)
-        {
-            throw new NotImplementedException();
+            Componenti.Add(cmp);
+            Numcomponenti++;
         }
 
         public override void Remove(int ind)
         {
-            throw new NotImplementedException();
+            Componenti.RemoveAt(ind);
+            Numcomponenti--;
         }
 
         public override string GetChild(int ind)
         {
-            throw new NotImplementedException();
+            return Componenti[ind].ToString();
+        }
+
+        public override string Descrizione()
+        {
+            string tot = "";
+            for (int i = 0; i < Numcomponenti; i++)
+            {
+                tot += Componenti[i].Descrizione();
+                if (i != Numcomponenti - 1)
+                {
+                    tot += "\n";
+                }
+            }
+            return tot;
+        }
+
+        public override double CalcoloCosto()
+        {
+            double tot = 0;
+            for (int i = 0; i < Numcomponenti; i++)
+            {
+                tot += Componenti[i].CalcoloCosto();
+            }
+            return tot;
         }
     }
 }
